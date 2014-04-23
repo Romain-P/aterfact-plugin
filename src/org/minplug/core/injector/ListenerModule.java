@@ -12,10 +12,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.minplug.plugin.LoginListener;
 
-public class DefaultModule extends AbstractModule {
+public class ListenerModule extends AbstractModule {
     private JavaPlugin plugin;
 
-    public DefaultModule(JavaPlugin plugin) {
+    public ListenerModule(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
