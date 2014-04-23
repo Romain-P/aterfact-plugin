@@ -1,3 +1,5 @@
-name: Minplug
+name: minplug
 main: org.minplug.core.Main
 version: 1.0.0.0
+description: simple minecraft plugin
+author: romain pillot
