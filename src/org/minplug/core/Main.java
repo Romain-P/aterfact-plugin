@@ -2,16 +2,12 @@ package org.minplug.core;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import lombok.extern.slf4j.Slf4j;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.minplug.core.injector.DefaultModule;
 
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@Slf4j
 public class Main extends JavaPlugin {
     @Override
     @SuppressWarnings("unchecked")
