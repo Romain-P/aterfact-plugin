@@ -1,4 +1,4 @@
 Minplug
 ====================================
 
-Minecraft plugin test
+Minecraft plugin
