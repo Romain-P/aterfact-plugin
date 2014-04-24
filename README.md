@@ -1,4 +1,4 @@
-Minplug
+Aterfact-Plugin
 ====================================
 
-Minecraft plugin
+Free minecraft plugin
