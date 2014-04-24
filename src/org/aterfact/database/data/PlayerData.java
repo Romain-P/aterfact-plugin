@@ -1,11 +1,13 @@
 package org.aterfact.database.data;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aterfact.database.AbstractDAO;
 import org.aterfact.database.objects.Player;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+@Slf4j
 public class PlayerData extends AbstractDAO<Player> {
     @Override
     public boolean create(Player obj) {
@@ -17,7 +19,7 @@ public class PlayerData extends AbstractDAO<Player> {
             execute(statement);
             return true;
         } catch(Exception e) {
-            plugin.getLogger().severe("sql-error : "+ e.getMessage());
+            log.error("sql-error : "+ e.getMessage());
         }
         return false;
     }
@@ -39,7 +41,7 @@ public class PlayerData extends AbstractDAO<Player> {
             execute(statement);
             return true;
         } catch(Exception e) {
-            plugin.getLogger().severe("sql-error : "+ e.getMessage());
+            log.error("sql-error : "+ e.getMessage());
         }
         return false;
     }
@@ -58,7 +60,7 @@ public class PlayerData extends AbstractDAO<Player> {
             }
             closeResultSet(result);
         } catch(Exception e) {
-            plugin.getLogger().severe("sql-error : " + e.getMessage());
+            log.error("sql-error : " + e.getMessage());
         }
         return player;
     }

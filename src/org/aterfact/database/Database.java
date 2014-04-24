@@ -2,19 +2,20 @@ package org.aterfact.database;
 
 import com.google.inject.Inject;
 import lombok.Getter;
-import org.bukkit.plugin.java.JavaPlugin;
+import lombok.extern.slf4j.Slf4j;
+import org.aterfact.core.Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+@Slf4j
 public class Database {
     @Getter Connection connection;
-    @Inject JavaPlugin plugin;
     @Inject Set<DAO> objects;
+    @Inject Config config;
 
     @Getter
     private Map<Class, DAO> data = new HashMap<>();
@@ -22,14 +23,14 @@ public class Database {
     public void initializeConnection() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://" +
-                    plugin.getConfig().getString("aterfact.database.host") + "/" +
-                    plugin.getConfig().getString("aterfact.database.name"),
-                    plugin.getConfig().getString("aterfact.database.user"),
-                    plugin.getConfig().getString("aterfact.database.pass"));
+                    config.getDatabaseHost() + "/" +
+                    config.getDatabaseName(),
+                    config.getDatabaseUser(),
+                    config.getDatabasePass());
             connection.setAutoCommit(true);
             initializeData();
         } catch(Exception e) {
-            plugin.getLogger().severe("Can't connect to database: " + e.getMessage());
+            log.error("Can't connect to database: " + e.getMessage());
             System.exit(1);
         }
     }
@@ -37,15 +38,6 @@ public class Database {
     public void initializeData() {
         for(DAO data: objects)
             this.data.put(data.getClass(), data);
-        plugin.getLogger().info(data.size() + " dao-objects loaded");
-    }
-
-    public void close() {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            plugin.getLogger().severe("Sql error: " + e.getMessage());
-            System.exit(1);
-        }
+        log.info(data.size() + " dao-objects loaded");
     }
 }
