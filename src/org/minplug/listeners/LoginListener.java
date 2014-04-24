@@ -1,4 +1,4 @@
-package org.minplug.plugin;
+package org.minplug.listeners;
 
 import com.google.inject.Inject;
 import org.bukkit.event.EventHandler;
