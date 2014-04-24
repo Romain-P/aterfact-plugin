@@ -17,7 +17,7 @@ import java.util.Set;
 public class Aterfact extends JavaPlugin {
     @Override
     public void onEnable() {
-        Injector injector = Guice.createInjector(new DefaultModule(this), new ListenerModule(), new DatabaseModule());
+        Injector injector = Guice.createInjector(new DefaultModule(), new ListenerModule(), new DatabaseModule());
         log.info("loading config..");
         injector.getInstance(Config.class).initialize();
 

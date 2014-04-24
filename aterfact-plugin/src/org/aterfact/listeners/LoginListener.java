@@ -1,6 +1,7 @@
 package org.aterfact.listeners;
 
 import lombok.extern.slf4j.Slf4j;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -10,7 +11,6 @@ import org.bukkit.event.player.PlayerLoginEvent;
 public class LoginListener implements Listener {
     @EventHandler
     public void playerConnected(PlayerLoginEvent event) {
-
         log.info("player "+ event.getPlayer().getName() +" connected");
     }
 
