@@ -9,7 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.aterfact.listeners.injector.ListenerModule;
 import org.aterfact.database.Database;
 import org.aterfact.database.injector.DatabaseModule;
-import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
 import java.util.Set;

@@ -19,7 +19,7 @@ public class PlayerData extends AbstractDAO<Player> {
             execute(statement);
             return true;
         } catch(Exception e) {
-            log.error("sql-error : "+ e.getMessage());
+            log.error("sql-error : " + e.getMessage());
         }
         return false;
     }
@@ -41,7 +41,7 @@ public class PlayerData extends AbstractDAO<Player> {
             execute(statement);
             return true;
         } catch(Exception e) {
-            log.error("sql-error : "+ e.getMessage());
+            log.error("sql-error : " + e.getMessage());
         }
         return false;
     }

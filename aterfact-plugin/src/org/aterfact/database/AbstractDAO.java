@@ -2,7 +2,6 @@ package org.aterfact.database;
 
 import com.google.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

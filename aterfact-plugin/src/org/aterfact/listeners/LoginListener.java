@@ -17,7 +17,7 @@ public class LoginListener implements Listener {
     @EventHandler
     public void playerDisconnected(PlayerKickEvent event) {
 
-        log.info("player "+ event.getPlayer().getName() +" disconnected: "
+        log.info("player " + event.getPlayer().getName() + " disconnected: "
                 + event.getReason());
     }
 }
