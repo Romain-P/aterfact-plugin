@@ -1,4 +1,4 @@
-package org.aterfact.database.objects;
+package org.aterfact.objects;
 
 import lombok.Getter;
 import lombok.Setter;
