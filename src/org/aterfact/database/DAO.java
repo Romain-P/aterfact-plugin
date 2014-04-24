@@ -1,4 +1,4 @@
-package org.minplug.database;
+package org.aterfact.database;
 
 public interface DAO<T> {
     boolean create(T obj);

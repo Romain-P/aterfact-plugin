@@ -1,18 +1,17 @@
-package org.minplug.core;
+package org.aterfact.core;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.minplug.core.injector.ListenerModule;
-import org.minplug.database.Database;
-import org.minplug.database.injector.DatabaseModule;
+import org.aterfact.core.injector.ListenerModule;
+import org.aterfact.database.Database;
+import org.aterfact.database.injector.DatabaseModule;
 
 import java.util.Set;
 
 public class Main extends JavaPlugin {
     @Override
-    @SuppressWarnings("unchecked")
     public void onEnable() {
         Injector injector = Guice.createInjector(new ListenerModule(this), new DatabaseModule());
 
@@ -26,11 +25,11 @@ public class Main extends JavaPlugin {
         for(Listener listener: listeners)
             getServer().getPluginManager().registerEvents(listener, this);
 
-        getLogger().severe("minplug enable!");
+        getLogger().severe("aterfact enable!");
     }
 
     @Override
     public void onDisable() {
-        getLogger().severe("minplug is now disable!");
+        getLogger().severe("aterfact is now disable!");
     }
 }

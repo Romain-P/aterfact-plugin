@@ -1,7 +1,7 @@
-package org.minplug.database.data;
+package org.aterfact.database.data;
 
-import org.minplug.database.AbstractDAO;
-import org.minplug.database.objects.Player;
+import org.aterfact.database.AbstractDAO;
+import org.aterfact.database.objects.Player;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +58,7 @@ public class PlayerData extends AbstractDAO<Player> {
             }
             closeResultSet(result);
         } catch(Exception e) {
-            plugin.getLogger().severe("sql-error : "+ e.getMessage());
+            plugin.getLogger().severe("sql-error : " + e.getMessage());
         }
         return player;
     }

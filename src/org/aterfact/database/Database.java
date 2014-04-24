@@ -1,4 +1,4 @@
-package org.minplug.database;
+package org.aterfact.database;
 
 import com.google.inject.Inject;
 import lombok.Getter;
@@ -22,10 +22,10 @@ public class Database {
     public void initializeConnection() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://" +
-                    plugin.getConfig().getString("minplug.database.host") + "/" +
-                    plugin.getConfig().getString("minplug.database.name"),
-                    plugin.getConfig().getString("minplug.database.user"),
-                    plugin.getConfig().getString("minplug.database.pass"));
+                    plugin.getConfig().getString("aterfact.database.host") + "/" +
+                    plugin.getConfig().getString("aterfact.database.name"),
+                    plugin.getConfig().getString("aterfact.database.user"),
+                    plugin.getConfig().getString("aterfact.database.pass"));
             connection.setAutoCommit(true);
             initializeData();
         } catch(Exception e) {

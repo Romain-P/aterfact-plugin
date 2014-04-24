@@ -1,5 +1,5 @@
-name: minplug
-main: org.minplug.core.Main
+name: aterfact
+main: org.aterfactt.core.Main
 version: 1.0.0.0
-description: simple minecraft listeners
+description: simple minecraft plugin
 author: romain pillot

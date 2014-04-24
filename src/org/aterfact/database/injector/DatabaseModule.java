@@ -1,10 +1,10 @@
-package org.minplug.database.injector;
+package org.aterfact.database.injector;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
-import org.minplug.database.DAO;
-import org.minplug.database.Database;
-import org.minplug.database.data.PlayerData;
+import org.aterfact.database.DAO;
+import org.aterfact.database.Database;
+import org.aterfact.database.data.PlayerData;
 
 import java.util.concurrent.locks.ReentrantLock;
 

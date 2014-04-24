@@ -1,4 +1,4 @@
-package org.minplug.database;
+package org.aterfact.database;
 
 import com.google.inject.Inject;
 import org.bukkit.plugin.java.JavaPlugin;

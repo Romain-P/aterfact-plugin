@@ -1,4 +1,4 @@
-package org.minplug.database.objects;
+package org.aterfact.database.objects;
 
 import lombok.Getter;
 import lombok.Setter;
