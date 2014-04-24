@@ -10,7 +10,7 @@ import org.aterfact.database.injector.DatabaseModule;
 
 import java.util.Set;
 
-public class Main extends JavaPlugin {
+public class Aterfact extends JavaPlugin {
     @Override
     public void onEnable() {
         Injector injector = Guice.createInjector(new ListenerModule(this), new DatabaseModule());

@@ -1,5 +1,5 @@
 name: aterfact
-main: org.aterfactt.core.Main
+main: org.aterfact.core.Aterfactfact
 version: 1.0.0.0
 description: simple minecraft plugin
 author: romain pillot
