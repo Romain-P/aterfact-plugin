@@ -27,10 +27,8 @@ public class ServerHandler {
 
     @Getter private Map<String, ClientPlayer> players;
 
-    @Inject
-    Config config;
-    @Inject
-    ServerManager manager;
+    @Inject Config config;
+    @Inject ServerManager manager;
     @Inject PlayerManager playerManager;
     @Inject Injector injector;
 

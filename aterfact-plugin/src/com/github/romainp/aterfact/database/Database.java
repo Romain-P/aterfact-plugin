@@ -11,8 +11,7 @@ import java.sql.SQLException;
 
 public class Database {
     @Getter private Connection connection;
-    @Inject
-    Config config;
+    @Inject Config config;
     @Inject JavaPlugin plugin;
 
     public void initializeConnection() {

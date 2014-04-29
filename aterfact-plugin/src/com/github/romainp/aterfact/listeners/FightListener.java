@@ -9,10 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class FightListener implements Listener {
-    @Inject
-    ServerHandler server;
-    @Inject
-    Config config;
+    @Inject ServerHandler server;
+    @Inject Config config;
 
     @EventHandler
     public void playerDied(PlayerDeathEvent event) {

@@ -16,8 +16,7 @@ public class ClientPlayer {
     @Getter @Setter private boolean connected;
 
     @Inject PlayerManager manager;
-    @Inject
-    Config config;
+    @Inject Config config;
 
     public ClientPlayer(String uuid, String name, int kills, int deaths) {
         this.uuid = uuid;
