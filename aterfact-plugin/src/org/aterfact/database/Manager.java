@@ -12,7 +12,7 @@ public class Manager {
 	@Inject ReentrantLock locker;
     @Inject JavaPlugin plugin;
 
-	public void execute(String query) {
+	protected void execute(String query) {
 		locker.lock();
 	    try {
             database.getConnection().setAutoCommit(false);
@@ -39,8 +39,8 @@ public class Manager {
 	        locker.unlock();
 	    }
 	}
-	
-	public void execute(PreparedStatement statement) {
+
+    protected void execute(PreparedStatement statement) {
 		locker.lock();
 	    try {
             database.getConnection().setAutoCommit(false);
@@ -68,8 +68,8 @@ public class Manager {
 	        locker.unlock();
 	    }
 	}
-	
-	public ResultSet getData(String query) {
+
+    protected ResultSet getData(String query) {
 		locker.lock();
 	    try {
             database.getConnection().setAutoCommit(false);
@@ -101,7 +101,7 @@ public class Manager {
 	    }
 	}
 
-    public PreparedStatement createStatement(String query) {
+    protected PreparedStatement createStatement(String query) {
         try {
             return database.getConnection().prepareStatement(query);
         } catch(Exception e) {
@@ -110,7 +110,7 @@ public class Manager {
         return null;
     }
 
-	public void closeResultSet(ResultSet result) {
+    protected void closeResultSet(ResultSet result) {
 		try {
 			result.getStatement().close();
 			result.close();
@@ -118,8 +118,8 @@ public class Manager {
             plugin.getLogger().warning("(sql error): " + e.getMessage());
 		}
 	}
-	
-	public void closeStatement(PreparedStatement statement) {
+
+    protected void closeStatement(PreparedStatement statement) {
 		try {
 			statement.clearParameters();
 	        statement.close();

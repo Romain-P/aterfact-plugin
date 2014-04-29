@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.aterfact.core.Config;
 import org.aterfact.database.managers.PlayerManager;
+import org.bukkit.Bukkit;
+
+import java.util.UUID;
 
 public class ClientPlayer {
     @Getter @Setter private String uuid, name;
@@ -21,9 +24,14 @@ public class ClientPlayer {
         this.deaths = deaths;
     }
 
-    public ClientPlayer(String name) {
-        this.uuid = "";
-        this.name = name;
+    public ClientPlayer(String attribute) {
+        if(config.isUseUuid()) {
+            this.uuid = attribute;
+            this.name = Bukkit.getServer().getPlayer(UUID.fromString(attribute)).getName();
+        } else {
+            this.uuid = "";
+            this.name = attribute;
+        }
     }
 
     public String getAttribute() {
