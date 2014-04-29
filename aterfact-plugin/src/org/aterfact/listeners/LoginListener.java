@@ -2,6 +2,7 @@ package org.aterfact.listeners;
 
 import com.google.inject.Inject;
 import org.aterfact.core.Config;
+import org.aterfact.database.managers.PlayerManager;
 import org.aterfact.objects.ClientPlayer;
 import org.aterfact.objects.ServerHandler;
 import org.bukkit.entity.Player;
@@ -16,10 +17,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class LoginListener implements Listener {
     @Inject ServerHandler server;
     @Inject Config config;
+    @Inject PlayerManager manager;
 
     @EventHandler
     public void playerConnected(PlayerLoginEvent event) {
         ClientPlayer client = generateByEvent(event);
+
+        if(config.isUseBungee())
+            manager.reload(client);
+
         client.setConnected(true);
         client.save();
     }
