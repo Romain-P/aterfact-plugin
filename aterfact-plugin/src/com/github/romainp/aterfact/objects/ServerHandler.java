@@ -83,11 +83,11 @@ public class ServerHandler {
         return player;
     }
 
-    public ClientPlayer getPlayerByEvent(PlayerEvent event) {
+    public ClientPlayer getPlayerByEvent(PlayerEvent event, boolean create) {
         Player player = event.getPlayer();
         String attribute = config.isUseUuid() ? player.getUniqueId().toString() : player.getName();
 
-        return getPlayer(attribute);
+        return getPlayer(attribute, create);
     }
 
     public ClientPlayer getPlayerByEvent(EntityEvent event) {

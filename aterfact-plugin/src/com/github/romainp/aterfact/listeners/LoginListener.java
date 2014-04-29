@@ -17,7 +17,7 @@ public class LoginListener implements Listener {
 
     @EventHandler
     public void playerConnected(PlayerLoginEvent event) {
-        ClientPlayer client = server.getPlayerByEvent(event);
+        ClientPlayer client = server.getPlayerByEvent(event, true);
 
         if(config.isUseBungee())
             manager.reload(client);
@@ -28,7 +28,7 @@ public class LoginListener implements Listener {
 
     @EventHandler
     public void playerDisconnected(PlayerKickEvent event) {
-        ClientPlayer client = server.getPlayerByEvent(event);
+        ClientPlayer client = server.getPlayerByEvent(event, false);
         client.setConnected(false);
         client.save();
     }
