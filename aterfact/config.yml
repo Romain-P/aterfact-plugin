@@ -1,0 +1,9 @@
+server:
+   name: main
+   uuid: false
+   bungee: false
+database:
+   host: localhost
+   name: database
+   user: root
+   pass: password

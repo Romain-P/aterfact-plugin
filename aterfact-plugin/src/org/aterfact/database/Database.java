@@ -2,42 +2,38 @@ package org.aterfact.database;
 
 import com.google.inject.Inject;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.aterfact.core.Config;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.sql.SQLException;
 
-@Slf4j
 public class Database {
-    @Getter Connection connection;
-    @Inject Set<DAO> objects;
+    @Getter private Connection connection;
     @Inject Config config;
-
-    @Getter
-    private Map<Class, DAO> data = new HashMap<>();
+    @Inject JavaPlugin plugin;
 
     public void initializeConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://" +
-                    config.getDatabaseHost() + "/" +
-                    config.getDatabaseName(),
+            connection = DriverManager.getConnection(
+                    config.getDatabaseUrl(),
                     config.getDatabaseUser(),
                     config.getDatabasePass());
             connection.setAutoCommit(true);
-            initializeData();
-        } catch(Exception e) {
-            log.error("Can't connect to database: " + e.getMessage());
-            System.exit(1);
+
+            if(connection.isValid(1)) {
+                plugin.getLogger().info("database initialized!");
+            }
+        } catch(SQLException e) {
+            plugin.getLogger().warning("Can't connect to database: " + e.getMessage());
         }
     }
 
-    public void initializeData() {
-        for(DAO data: objects)
-            this.data.put(data.getClass(), data);
-        log.info(data.size() + " dao-objects loaded");
+    public void closeConnection() {
+        try {
+            if(!connection.isClosed())
+                connection.close();
+        } catch(Exception e) {}
     }
 }

@@ -1,31 +1,29 @@
 package org.aterfact.core;
 
-import com.typesafe.config.ConfigFactory;
+import com.google.inject.Inject;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-
-@Slf4j
 public class Config {
-    private com.typesafe.config.Config config;
+    @Inject private JavaPlugin plugin;
     @Getter private String databaseHost;
     @Getter private String databaseName;
     @Getter private String databaseUser;
     @Getter private String databasePass;
-
-    public Config() {
-        this.config = ConfigFactory.parseFile(new File("aterfact/config.conf"));
-    }
+    @Getter private String databaseUrl;
+    @Getter private String serverName;
+    @Getter private boolean useUuid;
+    @Getter private String attribute;
 
     public void initialize() {
-        if(config.isEmpty()) {
-            log.error("aterfact can't load \"aterfact/config.conf\"");
-            System.exit(1);
-        }
-        this.databaseHost = config.getString("aterfact.database.host");
-        this.databaseName = config.getString("aterfact.database.name");
-        this.databaseUser = config.getString("aterfact.database.user");
-        this.databasePass = config.getString("aterfact.database.pass");
+        this.databaseHost = plugin.getConfig().getString("database.host");
+        this.databaseName = plugin.getConfig().getString("database.name");
+        this.databaseUser = plugin.getConfig().getString("database.user");
+        this.databasePass = plugin.getConfig().getString("database.pass");
+        this.databaseUrl = "jdbc:mysql://"+databaseHost+"/"+databaseName;
+        this.serverName = plugin.getConfig().getString("server.name");
+        this.useUuid = plugin.getConfig().getBoolean("server.uuid");
+        this.attribute = useUuid ? "uuid" : "name";
     }
 }
