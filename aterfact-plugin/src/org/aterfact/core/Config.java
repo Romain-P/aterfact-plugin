@@ -13,7 +13,7 @@ public class Config {
     @Getter private String databasePass;
     @Getter private String databaseUrl;
     @Getter private String serverName;
-    @Getter private boolean useUuid, useBungee;
+    @Getter private boolean useUuid, useBungee, useMessages;
     @Getter private String attribute;
 
     public void initialize() {
@@ -25,6 +25,7 @@ public class Config {
         this.serverName = plugin.getConfig().getString("server.name");
         this.useUuid = plugin.getConfig().getBoolean("server.uuid");
         this.useBungee = plugin.getConfig().getBoolean("server.bungee");
+        this.useMessages = plugin.getConfig().getBoolean("server.messages");
         this.attribute = useUuid ? "uuid" : "name";
     }
 }

@@ -22,7 +22,7 @@ public class PlayerManager extends Manager {
             statement.setString(2, player.getName());
             statement.setInt(3, player.getKills());
             statement.setInt(4, player.getDeaths());
-            statement.setBoolean(5, player.isConnected());
+            statement.setString(5, String.valueOf(player.isConnected()));
             execute(statement);
         } catch(Exception e) {
             plugin.getLogger().warning("sql error: "+e);
@@ -72,7 +72,7 @@ public class PlayerManager extends Manager {
             statement.setString(2, player.getName());
             statement.setInt(3, player.getKills());
             statement.setInt(4, player.getDeaths());
-            statement.setBoolean(5, player.isConnected());
+            statement.setString(5, String.valueOf(player.isConnected()));
             statement.setString(6, player.getAttribute());
             execute(statement);
         } catch(Exception e) {

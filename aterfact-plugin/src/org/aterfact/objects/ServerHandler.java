@@ -7,6 +7,10 @@ import org.aterfact.core.Config;
 import org.aterfact.database.managers.PlayerManager;
 import org.aterfact.database.managers.ServerManager;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.player.PlayerEvent;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -77,6 +81,33 @@ public class ServerHandler {
         ClientPlayer player = new ClientPlayer(name);
         playerManager.create(player);
         return player;
+    }
+
+    public ClientPlayer getPlayerByEvent(PlayerEvent event) {
+        Player player = event.getPlayer();
+        String attribute = config.isUseUuid() ? player.getUniqueId().toString() : player.getName();
+
+        return getPlayer(attribute);
+    }
+
+    public ClientPlayer getPlayerByEvent(EntityEvent event) {
+        if(!(event.getEntity() instanceof Player))
+            return null;
+
+        Player player = (Player) event.getEntity();
+        String attribute = config.isUseUuid() ? player.getUniqueId().toString() : player.getName();
+
+        return getPlayer(attribute);
+    }
+
+    public ClientPlayer getPlayerByEntity(Entity entity) {
+        if(!(entity instanceof Player))
+            return null;
+
+        Player player = (Player) entity;
+        String attribute = config.isUseUuid() ? player.getUniqueId().toString() : player.getName();
+
+        return getPlayer(attribute);
     }
 
     public String getUptime() {

@@ -2,6 +2,8 @@ server:
    name: main
    uuid: false
    bungee: false
+stats:
+   messages: false
 database:
    host: localhost
    name: database

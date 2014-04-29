@@ -6,6 +6,7 @@ import com.google.inject.Injector;
 import lombok.extern.slf4j.Slf4j;
 import org.aterfact.core.injector.DefaultModule;
 import org.aterfact.database.Database;
+import org.aterfact.objects.ServerHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.aterfact.listeners.injector.ListenerModule;
@@ -31,6 +32,9 @@ public class Aterfact extends JavaPlugin {
 
         for(Listener listener: listeners)
             getServer().getPluginManager().registerEvents(listener, this);
+
+        getLogger().info("launching server handler..");
+        injector.getInstance(ServerHandler.class).initialize();
 
         getLogger().info("aterfact plugin anabled!");
     }

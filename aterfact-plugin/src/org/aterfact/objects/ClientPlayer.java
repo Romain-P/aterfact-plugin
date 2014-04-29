@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.aterfact.core.Config;
 import org.aterfact.database.managers.PlayerManager;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
@@ -32,6 +33,14 @@ public class ClientPlayer {
             this.uuid = "";
             this.name = attribute;
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    public void sendMessage(String message) {
+        Player player = config.isUseUuid()
+                ? Bukkit.getServer().getPlayer(UUID.fromString(this.uuid))
+                : Bukkit.getServer().getPlayer(this.name);
+        player.sendMessage(message);
     }
 
     public String getAttribute() {
